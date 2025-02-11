@@ -1,0 +1,5 @@
+# Python Exclusions
+__pycache__
+
+# Vs Code
+.vscode
