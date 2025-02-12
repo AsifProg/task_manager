@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-q&@sx@g94k)x*y(c)0y)3$*wgdu(b(3lpqplnb94_8e7&bc2&j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tasks',
+    'tailwind',
+    'theme',
 ]
 
 MIDDLEWARE = [
@@ -69,6 +71,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'task_manager.wsgi.application'
+
+TAILWIND_APP_NAME = 'theme'
 
 
 # Database
