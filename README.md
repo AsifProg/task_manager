@@ -154,12 +154,12 @@ This project is licensed under the MIT License.
 
 ## 👥 Contributors
 
-- **Your Name** (your-email@example.com)
+- **Ali Asif** (mirzaasifali209@gmail.com)
 
 For contributions, please submit a pull request or open an issue on GitHub.
 
 ## Contact
 
-For questions or support, reach out via **your-email@example.com**.
+For questions or support, reach out via **mirzaasifali209@gmail.com**.
 
 🎉 **Enjoy using the Django Task Management System!** 🚀
