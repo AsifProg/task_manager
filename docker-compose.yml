@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  web:
+    build: .
+    command: gunicorn --bind 0.0.0.0:8000 task_manager.wsgi:application
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./staticfiles:/app/staticfiles
+    ports:
+      - "80:80"
+    depends_on:
+      - web
