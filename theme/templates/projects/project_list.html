@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="{% static 'css/output.css' %}" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow">
+        <h2>All Projects</h2>
+        <ul>
+            {% for project in projects %}
+                <li>
+                    <a href="{% url 'project_detail' project.id %}" class="text-blue-500 hover:underline">
+                        {{ project.name }}
+                    </a>
+                </li>
+            {% empty %}
+                <p>No projects found.</p>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

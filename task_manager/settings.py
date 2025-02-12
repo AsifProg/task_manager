@@ -41,9 +41,12 @@ INSTALLED_APPS = [
     'accounts',
     'tailwind',
     'theme',
+    # Django Allauth for authentication
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+
+    # OAuth Providers (Google, GitHub, etc.)
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.github',
 ]
@@ -57,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'task_manager.urls'
@@ -68,8 +72,8 @@ AUTHENTICATION_BACKENDS = [
 
 
 SITE_ID = 1
-LOGIN_REDIRECT_URL = '/dashboard/'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/tasks/'
+LOGOUT_REDIRECT_URL = '/login/'
 
 TEMPLATES = [
     {
@@ -91,6 +95,12 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 
 TAILWIND_APP_NAME = 'theme'
 
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "optional"
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"
+SOCIALACCOUNT_AUTO_SIGNUP = True
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

@@ -6,13 +6,36 @@
 </head>
 <body class="bg-gray-100 p-6">
     <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow">
-        <h1 class="text-2xl font-bold mb-4">Task List</h1>
+        <h2>
+            {% if project %}
+                Tasks for {{ project.name }}
+            {% else %}
+                All Tasks
+            {% endif %}
+        </h2>
+
         <a href="{% url 'task_create' %}" class="bg-blue-500 text-white px-4 py-2 rounded">Add Task</a>
+
         <ul>
             {% for task in tasks %}
-                <li class="p-2 border-b">{{ task.title }} - {{ task.status }}</li>
+                <li>
+                    <a href="{% url 'task_detail' task.id %}" class="text-blue-500 hover:underline">
+                        {{ task.title }}
+                    </a> - {{ task.status }}
+                </li>
+            {% empty %}
+                <p>No tasks available. Add a new one above!</p>
             {% endfor %}
         </ul>
+
+        {% if not project %}
+            <h3>Filter by Project</h3>
+            <ul>
+                {% for proj in projects %}
+                    <li><a href="{% url 'task_list_by_project' proj.id %}" class="text-blue-500 hover:underline">{{ proj.name }}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
     </div>
 </body>
 </html>
