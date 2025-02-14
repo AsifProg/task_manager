@@ -43,7 +43,7 @@ RUN python manage.py collectstatic
 
 EXPOSE 8000
 
-ENV DJANGO_SETTINGS_MODULE=ecommerce.settings
+ENV DJANGO_SETTINGS_MODULE=task_manager.settings
 ENV PYTHONUNBUFFERED=1
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "ecommerce.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "task_manager.wsgi:application"]
