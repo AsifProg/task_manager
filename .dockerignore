@@ -7,6 +7,5 @@ staticfiles
 # .env
 db.sqlite3
 .envs
-shop/static
 # theme/static
 migrations

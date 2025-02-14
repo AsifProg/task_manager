@@ -80,7 +80,6 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = "optional"
-# ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 SOCIALACCOUNT_AUTO_SIGNUP = True
 
 
@@ -118,8 +117,8 @@ USE_TZ = True
 
 
 STATICFILES_DIRS = [
-    # os.path.join(BASE_DIR, 'theme', 'static_src'),
-    os.path.join(BASE_DIR, 'theme/static'),
+    os.path.join(BASE_DIR, 'theme', 'static_src'),
+    os.path.join(BASE_DIR, 'theme', 'static')
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'

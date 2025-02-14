@@ -3,12 +3,18 @@
 <html lang="en" class="h-full bg-gray-50 dark:bg-gray-900">
   <head>
     <title>
-      {% block title %}Task Management System | Welcome plan your projects and
-      workings{% endblock %}
+      {% block title %}FocusDeck | Welcome to your Dashboard{% endblock %}
     </title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'favicon/favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" type="image/png" href="{% static 'favicon/favicon-96x96.png' %}" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="{% static 'favicon/favicon.svg' %}"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}" />
+    <meta name="apple-mobile-web-app-title" content="FocusDeck" />
+    <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}" />
     {% tailwind_css %}
   </head>
 
@@ -23,7 +29,7 @@
           >
             <a href="javascript:void(0)"
               ><img
-                src="https://readymadeui.com/readymadeui.svg"
+                src="{% static 'logo/logo.png' %}"
                 alt="logo"
                 class="w-36"
               />
@@ -296,7 +302,7 @@
                   </li>
                 </ul>
                 <div class="mt-6">
-                  <h6 class="text-blue-600 text-sm font-bold px-4">Actions</h6>
+                  <h6 class="text-primary-600 text-sm font-bold px-4">Actions</h6>
                   <ul class="mt-3 space-y-2">
                     <li>
                       <a

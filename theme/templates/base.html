@@ -2,11 +2,18 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full bg-gray-50 dark:bg-gray-900">
   <head>
-    <title>{% block title %}Task Management System | Welcome plan your projects and workings{% endblock %}</title>
+    <title>{% block title %}FocusDeck | Welcome plan your projects and workings{% endblock %}</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     {% tailwind_css %}
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'favicon/favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" type="image/png" href="{% static 'favicon/favicon-96x96.png' %}" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="{% static 'favicon/favicon.svg' %}"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}" />
+    <meta name="apple-mobile-web-app-title" content="FocusDeck" />
+    <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}" />
   </head>
 
   <body class="bg-gray-50 font-sans leading-normal tracking-normal h-full">
