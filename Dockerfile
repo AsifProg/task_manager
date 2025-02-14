@@ -32,7 +32,8 @@ COPY . .
 
 RUN python manage.py makemigrations
 # just incase
-RUN python manage.py makemigrations shop
+RUN python manage.py makemigrations accounts
+RUN python manage.py makemigrations tasks
 RUN python manage.py migrate
 
 
