@@ -20,8 +20,6 @@ COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-# COPY .env .env
-
 COPY theme/static_src/package.json theme/static_src/package-lock.json ./theme/static_src/
 
 WORKDIR /app/theme/static_src
@@ -30,13 +28,12 @@ RUN npm install -g yarn && yarn install
 WORKDIR /app
 COPY . .
 
+VOLUME /app/media
+
 RUN python manage.py makemigrations
-# just incase
 RUN python manage.py makemigrations accounts
 RUN python manage.py makemigrations tasks
 RUN python manage.py migrate
-
-
 
 RUN python manage.py tailwind build
 
