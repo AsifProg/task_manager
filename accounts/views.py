@@ -2,11 +2,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from allauth.socialaccount.models import SocialAccount # type: ignore
 from django.contrib.auth.decorators import login_required
+from .models import Profile
 from .forms import RegisterForm, ProfileUpdateForm
 
 
 def register(request):
-    """Handles both manual registration and OAuth login."""
     if request.user.is_authenticated:
         return redirect('task_list')
 
@@ -25,18 +25,18 @@ def register(request):
 
 @login_required
 def profile_view(request):
-    """Handles profile updates."""
     user = request.user
-    is_oauth_user = SocialAccount.objects.filter(
-        user=user).exists()
+    is_oauth_user = SocialAccount.objects.filter(user=user).exists()
+
+    profile, created = Profile.objects.get_or_create(user=user)
 
     if request.method == "POST":
-        form = ProfileUpdateForm(
-            request.POST, request.FILES, instance=user.profile)
+        form = ProfileUpdateForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()
             return redirect('profile')
     else:
-        form = ProfileUpdateForm(instance=user.profile)
+        form = ProfileUpdateForm(instance=profile)
 
     return render(request, 'accounts/profile.html', {'form': form, 'is_oauth_user': is_oauth_user})
+

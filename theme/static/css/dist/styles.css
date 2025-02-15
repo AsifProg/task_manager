@@ -2898,6 +2898,10 @@ input:checked + .toggle-bg {
   font-weight: 600;
 }
 
+.font-extralight {
+  font-weight: 200;
+}
+
 .uppercase {
   text-transform: uppercase;
 }
@@ -3191,6 +3195,14 @@ input:checked + .toggle-bg {
 
 .hover\:fill-\[\#077bff\]:hover {
   fill: #077bff;
+}
+
+.hover\:fill-\[primary-600\]:hover {
+  fill: primary-600;
+}
+
+.hover\:fill-primary-600:hover {
+  fill: #7c21ae;
 }
 
 .hover\:text-blue-600:hover {
@@ -3635,6 +3647,11 @@ input:checked + .toggle-bg {
   .max-lg\:py-2 {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+  }
+
+  .max-lg\:py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
 
   .max-lg\:pb-4 {
