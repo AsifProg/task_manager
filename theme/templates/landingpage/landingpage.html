@@ -77,8 +77,8 @@
         {% if user.is_authenticated %}
           <div class='flex ml-auto items-center gap-2'>
             <span
-                class='hover:text-primary-600 block font-light transition-all cursor-pointer'>
-                Hi {{ user.username }}
+                class='hover:text-primary-600 text-gray-800 block text-sm transition-all cursor-pointer'>
+                &#128075  {{ user.username }}
             </span>
             <div class="dropdown-menu relative flex shrink-0 group">
               <img 
@@ -131,7 +131,7 @@
                   >
                   <a
                     href="{% url 'project_list' %}"
-                    class="text-gray-800 text-sm flex items-center {% if request.resolver_match.url_name == 'project_list' %}bg-gray-200{% else %}hover:bg-gray-100{% endif %} rounded-md px-4 py-2 transition-all"
+                    class="text-sm text-gray-800 cursor-pointer flex items-center p-2 rounded-md {% if request.resolver_match.url_name == 'project_list' %}bg-gray-200{% else %}hover:bg-gray-100{% endif %} dropdown-item transition duration-300 ease-in-out"
                   >
                     <svg
                       version="1.1"
@@ -142,7 +142,7 @@
                       x="0px"
                       y="0px"
                       fill="currentColor"
-                      class="w-[18px] h-[18px] mr-3"
+                      class="w-4 h-4 mr-3 fill-current"
                       viewBox="0 0 24 24"
                       xml:space="preserve"
                     >
@@ -231,17 +231,30 @@
             </h1>
             <p class="text-base leading-relaxed">Seamlessly manage tasks, track progress, and boost productivity with FocusDeck—your all-in-one task management platform.</p>
             <div class="flex flex-wrap gap-y-4 gap-x-8 mt-8">
-              <a
-                href="{% url 'register' %}"
-                class='bg-black hover:bg-[#222] text-white flex items-center transition-all font-semibold rounded-md px-5 py-4'>Get
-                started
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-[14px] fill-current ml-2"
-                  viewBox="0 0 492.004 492.004">
-                  <path
-                    d="M484.14 226.886 306.46 49.202c-5.072-5.072-11.832-7.856-19.04-7.856-7.216 0-13.972 2.788-19.044 7.856l-16.132 16.136c-5.068 5.064-7.86 11.828-7.86 19.04 0 7.208 2.792 14.2 7.86 19.264L355.9 207.526H26.58C11.732 207.526 0 219.15 0 234.002v22.812c0 14.852 11.732 27.648 26.58 27.648h330.496L252.248 388.926c-5.068 5.072-7.86 11.652-7.86 18.864 0 7.204 2.792 13.88 7.86 18.948l16.132 16.084c5.072 5.072 11.828 7.836 19.044 7.836 7.208 0 13.968-2.8 19.04-7.872l177.68-177.68c5.084-5.088 7.88-11.88 7.86-19.1.016-7.244-2.776-14.04-7.864-19.12z"
-                    data-original="#000000" />
-                </svg>
-              </a>
+              {% if user.is_authenticated %}
+                <a
+                  href="{% url 'task_list' %}"
+                  class='bg-black hover:bg-[#222] text-white flex items-center transition-all font-semibold rounded-md px-5 py-4'>Dashboard
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-[14px] fill-current ml-2"
+                    viewBox="0 0 492.004 492.004">
+                    <path
+                      d="M484.14 226.886 306.46 49.202c-5.072-5.072-11.832-7.856-19.04-7.856-7.216 0-13.972 2.788-19.044 7.856l-16.132 16.136c-5.068 5.064-7.86 11.828-7.86 19.04 0 7.208 2.792 14.2 7.86 19.264L355.9 207.526H26.58C11.732 207.526 0 219.15 0 234.002v22.812c0 14.852 11.732 27.648 26.58 27.648h330.496L252.248 388.926c-5.068 5.072-7.86 11.652-7.86 18.864 0 7.204 2.792 13.88 7.86 18.948l16.132 16.084c5.072 5.072 11.828 7.836 19.044 7.836 7.208 0 13.968-2.8 19.04-7.872l177.68-177.68c5.084-5.088 7.88-11.88 7.86-19.1.016-7.244-2.776-14.04-7.864-19.12z"
+                      data-original="#000000" />
+                  </svg>
+                </a>
+                {% else %}
+                  <a
+                    href="{% url 'register' %}"
+                    class='bg-black hover:bg-[#222] text-white flex items-center transition-all font-semibold rounded-md px-5 py-4'>Get
+                    started
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-[14px] fill-current ml-2"
+                      viewBox="0 0 492.004 492.004">
+                      <path
+                        d="M484.14 226.886 306.46 49.202c-5.072-5.072-11.832-7.856-19.04-7.856-7.216 0-13.972 2.788-19.044 7.856l-16.132 16.136c-5.068 5.064-7.86 11.828-7.86 19.04 0 7.208 2.792 14.2 7.86 19.264L355.9 207.526H26.58C11.732 207.526 0 219.15 0 234.002v22.812c0 14.852 11.732 27.648 26.58 27.648h330.496L252.248 388.926c-5.068 5.072-7.86 11.652-7.86 18.864 0 7.204 2.792 13.88 7.86 18.948l16.132 16.084c5.072 5.072 11.828 7.836 19.044 7.836 7.208 0 13.968-2.8 19.04-7.872l177.68-177.68c5.084-5.088 7.88-11.88 7.86-19.1.016-7.244-2.776-14.04-7.864-19.12z"
+                        data-original="#000000" />
+                    </svg>
+                  </a>
+                {% endif %}
             </div>
           </div>
           <div class="max-lg:mt-12 h-full">
@@ -257,15 +270,27 @@
           <div class="">
             <h2 class="md:text-4xl text-3xl font-semibold mb-6">Stay Organized, Stay Focused</h2>
             <p>FocusDeck empowers you to take control of your workflow with a seamless and intuitive task management experience. Whether you're managing personal projects or collaborating with a team, our platform ensures that you stay on top of your tasks without distractions. With smart categorization, real-time updates, and a user-friendly interface, FocusDeck keeps you organized and focused—so you can accomplish more with ease.</p>
+            {% if user.is_authenticated %}
             <a
-              href="{% url 'register' %}"
-              class='bg-black hover:bg-[#222] text-white flex items-center transition-all w-fit font-semibold rounded-md px-5 py-4 mt-8'>Get Started
+              href="{% url 'task_list' %}"
+              class='bg-black hover:bg-[#222] text-white flex items-center transition-all w-fit font-semibold rounded-md px-5 py-4 mt-8'>Dashboard
               <svg xmlns="http://www.w3.org/2000/svg" class="w-[14px] fill-current ml-2" viewBox="0 0 492.004 492.004">
                 <path
                   d="M484.14 226.886 306.46 49.202c-5.072-5.072-11.832-7.856-19.04-7.856-7.216 0-13.972 2.788-19.044 7.856l-16.132 16.136c-5.068 5.064-7.86 11.828-7.86 19.04 0 7.208 2.792 14.2 7.86 19.264L355.9 207.526H26.58C11.732 207.526 0 219.15 0 234.002v22.812c0 14.852 11.732 27.648 26.58 27.648h330.496L252.248 388.926c-5.068 5.072-7.86 11.652-7.86 18.864 0 7.204 2.792 13.88 7.86 18.948l16.132 16.084c5.072 5.072 11.828 7.836 19.044 7.836 7.208 0 13.968-2.8 19.04-7.872l177.68-177.68c5.084-5.088 7.88-11.88 7.86-19.1.016-7.244-2.776-14.04-7.864-19.12z"
                   data-original="#000000" />
               </svg>
             </a>
+            {% else %}
+              <a
+                href="{% url 'register' %}"
+                class='bg-black hover:bg-[#222] text-white flex items-center transition-all w-fit font-semibold rounded-md px-5 py-4 mt-8'>Get Started
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-[14px] fill-current ml-2" viewBox="0 0 492.004 492.004">
+                  <path
+                    d="M484.14 226.886 306.46 49.202c-5.072-5.072-11.832-7.856-19.04-7.856-7.216 0-13.972 2.788-19.044 7.856l-16.132 16.136c-5.068 5.064-7.86 11.828-7.86 19.04 0 7.208 2.792 14.2 7.86 19.264L355.9 207.526H26.58C11.732 207.526 0 219.15 0 234.002v22.812c0 14.852 11.732 27.648 26.58 27.648h330.496L252.248 388.926c-5.068 5.072-7.86 11.652-7.86 18.864 0 7.204 2.792 13.88 7.86 18.948l16.132 16.084c5.072 5.072 11.828 7.836 19.044 7.836 7.208 0 13.968-2.8 19.04-7.872l177.68-177.68c5.084-5.088 7.88-11.88 7.86-19.1.016-7.244-2.776-14.04-7.864-19.12z"
+                    data-original="#000000" />
+                </svg>
+              </a>
+            {% endif %}
           </div>
           <div class="grid sm:grid-cols-2 gap-8">
             <div
@@ -368,16 +393,29 @@
         <div>
           <h2 class="md:text-4xl text-3xl font-semibold mb-6">100% Secure Task Management</h2>
           <p>At FocusDeck, we prioritize the security of your data. Our platform ensures that your tasks, projects, and user information are protected with robust encryption and secure authentication. With role-based access controls and industry-standard security measures, you can manage your tasks confidently, knowing that your data is safe and private.</p>
-          <a
-            href="{% url 'register' %}"
-            class="bg-black hover:bg-[#222] text-white w-fit flex items-center transition-all font-semibold rounded-md px-5 py-4 mt-8">
-            Get Started
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-[14px] fill-current ml-2" viewBox="0 0 492.004 492.004">
-              <path
-                d="M484.14 226.886 306.46 49.202c-5.072-5.072-11.832-7.856-19.04-7.856-7.216 0-13.972 2.788-19.044 7.856l-16.132 16.136c-5.068 5.064-7.86 11.828-7.86 19.04 0 7.208 2.792 14.2 7.86 19.264L355.9 207.526H26.58C11.732 207.526 0 219.15 0 234.002v22.812c0 14.852 11.732 27.648 26.58 27.648h330.496L252.248 388.926c-5.068 5.072-7.86 11.652-7.86 18.864 0 7.204 2.792 13.88 7.86 18.948l16.132 16.084c5.072 5.072 11.828 7.836 19.044 7.836 7.208 0 13.968-2.8 19.04-7.872l177.68-177.68c5.084-5.088 7.88-11.88 7.86-19.1.016-7.244-2.776-14.04-7.864-19.12z"
-                data-original="#000000"></path>
-            </svg>
-          </a>
+          {% if user.is_authenticated %}
+            <a
+              href="{% url 'task_list' %}"
+              class="bg-black hover:bg-[#222] text-white w-fit flex items-center transition-all font-semibold rounded-md px-5 py-4 mt-8">
+              Dashboard
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-[14px] fill-current ml-2" viewBox="0 0 492.004 492.004">
+                <path
+                  d="M484.14 226.886 306.46 49.202c-5.072-5.072-11.832-7.856-19.04-7.856-7.216 0-13.972 2.788-19.044 7.856l-16.132 16.136c-5.068 5.064-7.86 11.828-7.86 19.04 0 7.208 2.792 14.2 7.86 19.264L355.9 207.526H26.58C11.732 207.526 0 219.15 0 234.002v22.812c0 14.852 11.732 27.648 26.58 27.648h330.496L252.248 388.926c-5.068 5.072-7.86 11.652-7.86 18.864 0 7.204 2.792 13.88 7.86 18.948l16.132 16.084c5.072 5.072 11.828 7.836 19.044 7.836 7.208 0 13.968-2.8 19.04-7.872l177.68-177.68c5.084-5.088 7.88-11.88 7.86-19.1.016-7.244-2.776-14.04-7.864-19.12z"
+                  data-original="#000000"></path>
+              </svg>
+            </a>
+          {% else %}
+            <a
+                href="{% url 'register' %}"
+                class="bg-black hover:bg-[#222] text-white w-fit flex items-center transition-all font-semibold rounded-md px-5 py-4 mt-8">
+                Get Started
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-[14px] fill-current ml-2" viewBox="0 0 492.004 492.004">
+                  <path
+                    d="M484.14 226.886 306.46 49.202c-5.072-5.072-11.832-7.856-19.04-7.856-7.216 0-13.972 2.788-19.044 7.856l-16.132 16.136c-5.068 5.064-7.86 11.828-7.86 19.04 0 7.208 2.792 14.2 7.86 19.264L355.9 207.526H26.58C11.732 207.526 0 219.15 0 234.002v22.812c0 14.852 11.732 27.648 26.58 27.648h330.496L252.248 388.926c-5.068 5.072-7.86 11.652-7.86 18.864 0 7.204 2.792 13.88 7.86 18.948l16.132 16.084c5.072 5.072 11.828 7.836 19.044 7.836 7.208 0 13.968-2.8 19.04-7.872l177.68-177.68c5.084-5.088 7.88-11.88 7.86-19.1.016-7.244-2.776-14.04-7.864-19.12z"
+                    data-original="#000000"></path>
+                </svg>
+              </a>
+          {% endif %}
         </div>
         <div class="w-full h-full">
           <img src="https://readymadeui.com/login-image.webp" alt="feature" class="w-full h-full object-cover" />
@@ -390,16 +428,29 @@
         class="min-h-[400px] relative h-full max-w-2xl mx-auto flex flex-col justify-center items-center text-center px-6 py-16">
         <h2 class="md:text-4xl text-3xl font-semibold mb-6">Your Tasks, Anytime, Anywhere</h2>
         <p>With FocusDeck, your work is always within reach. Whether you're at your desk, on the go, or working remotely, our responsive and cloud-based platform ensures seamless access to your tasks from any device. Stay organized and productive no matter where you are—FocusDeck keeps you connected to what matters most.</p>
-        <a
-          href="{% url 'register' %}"
-          class="bg-black hover:bg-[#222] text-white flex items-center transition-all font-semibold rounded-md px-5 py-4 mt-8">
-          Get started
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-[14px] fill-current ml-2" viewBox="0 0 492.004 492.004">
-            <path
-              d="M484.14 226.886 306.46 49.202c-5.072-5.072-11.832-7.856-19.04-7.856-7.216 0-13.972 2.788-19.044 7.856l-16.132 16.136c-5.068 5.064-7.86 11.828-7.86 19.04 0 7.208 2.792 14.2 7.86 19.264L355.9 207.526H26.58C11.732 207.526 0 219.15 0 234.002v22.812c0 14.852 11.732 27.648 26.58 27.648h330.496L252.248 388.926c-5.068 5.072-7.86 11.652-7.86 18.864 0 7.204 2.792 13.88 7.86 18.948l16.132 16.084c5.072 5.072 11.828 7.836 19.044 7.836 7.208 0 13.968-2.8 19.04-7.872l177.68-177.68c5.084-5.088 7.88-11.88 7.86-19.1.016-7.244-2.776-14.04-7.864-19.12z"
-              data-original="#000000"></path>
-          </svg>
-        </a>
+        {% if user.is_authenticated %}
+          <a
+            href="{% url 'task_list' %}"
+            class="bg-black hover:bg-[#222] text-white flex items-center transition-all font-semibold rounded-md px-5 py-4 mt-8">
+            Dashboard
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-[14px] fill-current ml-2" viewBox="0 0 492.004 492.004">
+              <path
+                d="M484.14 226.886 306.46 49.202c-5.072-5.072-11.832-7.856-19.04-7.856-7.216 0-13.972 2.788-19.044 7.856l-16.132 16.136c-5.068 5.064-7.86 11.828-7.86 19.04 0 7.208 2.792 14.2 7.86 19.264L355.9 207.526H26.58C11.732 207.526 0 219.15 0 234.002v22.812c0 14.852 11.732 27.648 26.58 27.648h330.496L252.248 388.926c-5.068 5.072-7.86 11.652-7.86 18.864 0 7.204 2.792 13.88 7.86 18.948l16.132 16.084c5.072 5.072 11.828 7.836 19.044 7.836 7.208 0 13.968-2.8 19.04-7.872l177.68-177.68c5.084-5.088 7.88-11.88 7.86-19.1.016-7.244-2.776-14.04-7.864-19.12z"
+                data-original="#000000"></path>
+            </svg>
+          </a>
+        {% else %}
+          <a
+              href="{% url 'register' %}"
+              class="bg-black hover:bg-[#222] text-white flex items-center transition-all font-semibold rounded-md px-5 py-4 mt-8">
+              Get started
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-[14px] fill-current ml-2" viewBox="0 0 492.004 492.004">
+                <path
+                  d="M484.14 226.886 306.46 49.202c-5.072-5.072-11.832-7.856-19.04-7.856-7.216 0-13.972 2.788-19.044 7.856l-16.132 16.136c-5.068 5.064-7.86 11.828-7.86 19.04 0 7.208 2.792 14.2 7.86 19.264L355.9 207.526H26.58C11.732 207.526 0 219.15 0 234.002v22.812c0 14.852 11.732 27.648 26.58 27.648h330.496L252.248 388.926c-5.068 5.072-7.86 11.652-7.86 18.864 0 7.204 2.792 13.88 7.86 18.948l16.132 16.084c5.072 5.072 11.828 7.836 19.044 7.836 7.208 0 13.968-2.8 19.04-7.872l177.68-177.68c5.084-5.088 7.88-11.88 7.86-19.1.016-7.244-2.776-14.04-7.864-19.12z"
+                  data-original="#000000"></path>
+              </svg>
+            </a>
+        {% endif %}
       </div>
     </div>
 

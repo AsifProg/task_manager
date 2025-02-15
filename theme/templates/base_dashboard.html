@@ -27,7 +27,7 @@
           <div
             class="flex flex-wrap items-center justify-between gap-4 w-full relative"
           >
-            <a href="javascript:void(0)"
+            <a href="{% url 'home' %}"
               ><img
                 src="{% static 'logo/logo.png' %}"
                 alt="logo"
@@ -65,8 +65,8 @@
                 <div
                   class="flex items-center max-lg:flex-col-reverse max-lg:ml-auto gap-8"
                 >
-                <a href="{% url 'home' %}">
-                  <div class="flex items-center space-x-6 max-lg:flex-wrap">
+                  {% comment %} <a href="{% url 'home' %}">
+                    <div class="flex items-center space-x-6 max-lg:flex-wrap">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="w-5 h-5 cursor-pointer fill-[#333] hover:fill-primary-600"
@@ -78,11 +78,11 @@
                         />
                       </svg>
                     </div>
-                  </a>
+                  </a> {% endcomment %}
 
                   <span
-                    class='hover:text-primary-600 block font-light transition-all cursor-pointer'>
-                    Hi {{ user.username }}
+                    class='hover:text-primary-600 text-gray-800 block text-sm transition-all cursor-pointer'>
+                      &#128075 {{ user.username }}
                   </span>
 
                   <div class="dropdown-menu relative flex shrink-0 group">
@@ -136,7 +136,7 @@
                         >
                         <a
                           href="{% url 'project_list' %}"
-                          class="text-gray-800 text-sm flex items-center {% if request.resolver_match.url_name == 'project_list' %}bg-gray-200{% else %}hover:bg-gray-100{% endif %} rounded-md px-4 py-2 transition-all"
+                          class="text-sm text-gray-800 cursor-pointer flex items-center p-2 rounded-md {% if request.resolver_match.url_name == 'project_list' %}bg-gray-200{% else %}hover:bg-gray-100{% endif %} dropdown-item transition duration-300 ease-in-out"
                         >
                           <svg
                             version="1.1"
@@ -147,7 +147,7 @@
                             x="0px"
                             y="0px"
                             fill="currentColor"
-                            class="w-[18px] h-[18px] mr-3"
+                            class="w-4 h-4 mr-3 fill-current"
                             viewBox="0 0 24 24"
                             xml:space="preserve"
                           >
