@@ -26,7 +26,10 @@ This is a web-based **Task Management System(FocusDeck)** built with **Django an
   - CSRF and XSS protection
   - **Role-based access control** ensures restricted access to sensitive data
   - Automated testing and CI/CD pipeline (planned in future updates)
-  
+
+## Demo
+To preview the live demo of the application please visit <a href="https://task-manager-dil0.onrender.com" target="_blank" rel="noopener noreferrer">FocusDeck</a>
+
 ## 📂 Project Structure
 
 ```
@@ -52,8 +55,8 @@ task_manager/
 │   ├── views.py
 │   ├── urls.py
 │
-├── static/  # Tailwind & static files
 ├── theme/
+│   ├── static/  # Tailwind & static files
 ├── nginx/
 │   ├── nginx.conf
 ```
