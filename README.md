@@ -1,27 +1,32 @@
-# Task Management System
+# Task Management System(FocusDeck)
 
-## Overview
-
-This project is a **web-based task management system** built using **Django and Tailwind CSS**. It follows software engineering best practices, including **OAuth authentication**, **user roles**, **task management**, **random quotes based on login time**, and **Dockerized deployment with Nginx** on **Render**.
+## Introduction
+This is a web-based **Task Management System(FocusDeck)** built with **Django and Tailwind CSS**. It allows users to create, manage, and track tasks within projects. The system is designed using Agile principles, ensuring **flexibility, scalability, and continuous improvements**. The application supports **role-based access control**, project-based task categorization, and **custom user profiles**.
 
 ## Features
+- **User Authentication & Role Management**
+  - Custom user model with **Admin, Team Leader, and Employee roles**
+  - Secure authentication with **Django Allauth**
 
-- **User Authentication (OAuth & Local Login)**
-  - Supports Google and GitHub OAuth
-  - Custom user profiles with additional fields (full name, bio, profile picture)
-- **Task Management System**
-  - CRUD operations for tasks (Create, Read, Update, Delete)
-  - Tasks categorized into projects
-  - Admin and standard user roles
-- **Random Quote Feature**
-  - Displays a motivational quote upon login
-- **Fully Responsive UI**
-  - Styled with Tailwind CSS for a modern look
-- **Dockerized Deployment with Nginx & Render**
-  - Runs in a Docker container
-  - Uses Nginx as a reverse proxy
-  - Deployed on Render with SQLite database
-
+- **Task & Project Management**
+  - Create, update, delete, and assign tasks to users
+  - Categorize tasks within projects
+  - Task prioritization and filtering
+  
+- **UI & Design Enhancements**
+  - Responsive design with **Tailwind CSS**
+  - Intuitive dashboard for task tracking
+  
+- **Scalability & Deployment**
+  - **Dockerized application** for easy deployment
+  - **Nginx reverse proxy** setup
+  - **Database upgrade-ready (PostgreSQL recommended)**
+  
+- 🔒 **Security & Reliability**
+  - CSRF and XSS protection
+  - **Role-based access control** ensures restricted access to sensitive data
+  - Automated testing and CI/CD pipeline (planned in future updates)
+  
 ## 📂 Project Structure
 
 ```
@@ -50,116 +55,87 @@ task_manager/
 ├── static/  # Tailwind & static files
 ├── theme/
 ├── nginx/
-│   ├── nginx.conf  # Reverse proxy configuration
+│   ├── nginx.conf
 ```
 
-## Installation & Setup
+## Installation Guide
+### Prerequisites
+- **Python 3.8+**
+- **Git**
+- **Docker** (if deploying with containerization)
+- **Node.js & npm** (for Tailwind CSS compilation)
 
-### Clone the Repository
-
-```bash
-git clone https://github.com/your-username/task-manager.git
+### Setup Instructions
+1. **Clone the Repository**
+```sh
+git clone https://github.com/AsifProg/task_manager.git
 cd task-manager
 ```
 
-### Set Up Virtual Environment & Install Dependencies
+2. **Set Up a Virtual Environment**
+```sh
+python3 -m venv venv
+source venv/bin/activate   # On Windows use: venv\Scripts\activate
+```
 
-```bash
-python -m venv env
-source env/bin/activate  # On Windows: env\Scripts\activate
+3. **Install Dependencies**
+```sh
 pip install -r requirements.txt
 ```
 
-### Run Database Migrations
-
-```bash
-python manage.py makemigrations
-python manage.py migrate
+4. **Apply Database Migrations**
+```sh
+python3 manage.py makemigrations
+python3 manage.py migrate
 ```
-
-### Collect Static Files
+5. **Collect Static Files**
 
 ```bash
 python manage.py collectstatic --noinput
 ```
 
-### Run the Development Server
-
-```bash
-python manage.py runserver
+6. **Run the Development Server**
+```sh
+python3 manage.py runserver
 ```
 
-Then, open **http://127.0.0.1:8000/** in your browser.
-
-## Running with Docker
-
-### Build and Start Containers
-
-```bash
-docker-compose up --build -d
+7. **Create a Superuser (Admin Access)**
+```sh
+python3 manage.py createsuperuser
 ```
 
-### Apply Migrations Inside the Container
-
-```bash
-docker-compose exec web python manage.py migrate
+8. **Running with Docker**
+```sh
+docker-compose up --build
 ```
 
-### Access the Application
-
-Visit **http://localhost/** (Nginx will proxy requests to Django).
-
-## Deployment on Render
-
-### Push to GitHub
-
-```bash
-git add .
-git commit -m "Deploying to Render"
-git push origin main
+9. **Compile Tailwind CSS**
+```sh
+cd theme
+cd static_src
+npm install
+npx tailwindcss -i ./src/input.css -o ./static/css/output.css --watch
+```
+```sh
+python3 manage.py tailwind start
 ```
 
-### Deploy on Render
-
-1. Go to [Render](https://dashboard.render.com/)
-2. Click "New Web Service"
-3. Connect to your GitHub repo
-4. Use the following commands:
-   - **Build Command:**
-     ```bash
-     docker build -t my-task-app .
-     ```
-   - **Start Command:**
-     ```bash
-     docker run -p 8000:8000 my-task-app
-     ```
-
-### Update Allowed Hosts in `settings.py`
-
-```python
-ALLOWED_HOSTS = ['your-render-domain.onrender.com']
+10. **Access the Application**
+```sh
+http://127.0.0.1:8000
 ```
 
-Then, redeploy on Render.
-
-## 🔒 Security Considerations
-
-- **OAuth Authentication:** Uses Django-Allauth for secure authentication.
-- **Role-Based Access Control:** Admin vs. Standard User permissions.
-- **HTTPS & Nginx:** Nginx serves as a reverse proxy for better security and scalability.
+## Future Enhancements
+- **OAuth Authentication** (Google/GitHub integration)
+- **AI-driven Task Recommendations**
+- **Mobile API Endpoints** for integration
+- **Figma-based UI Prototyping Improvements**
+- **Improved CI/CD pipeline with GitHub Actions**
 
 ## License
+This project is licensed under the MIT License. Feel free to use and modify it!
 
-This project is licensed under the MIT License.
+## 👥 Contributing
+Contributions are welcome! Fork the repository and submit a pull request for review.
 
-## 👥 Contributors
-
-- **Ali Asif** (mirzaasifali209@gmail.com)
-
-For contributions, please submit a pull request or open an issue on GitHub.
-
-## Contact
-
-For questions or support, reach out via **mirzaasifali209@gmail.com**.
-
-🎉 **Enjoy using the Django Task Management System!** 🚀
+🎉 **Enjoy using the Django Task Management System (FocusDeck)!** 🚀
